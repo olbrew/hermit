@@ -1,7 +1,8 @@
 {{/* We use some Hugo built-in templates, you can find their source here: */}}
 {{/* https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
 
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}" />
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+<meta http-equiv="Contect-Security-Policy" content={{ .Site.Params.csp.content }}>
 {{- template "_internal/schema.html" . }}
 {{- template "_internal/opengraph.html" . }}
 {{- template "_internal/twitter_cards.html" . }}
