@@ -2,6 +2,21 @@
 @import "normalize.scss";
 @import "syntax.scss";
 @import "animate.scss";
+@import "scroll.scss";
+@import "admonition.scss";
+@import "socialshare.scss";
+{{ if (fileExists "assets/scss/userstyles.scss") }}
+@import "userstyles.scss";
+{{ end }}
+
+/* text selection */
+::-moz-selection {
+  background: $highlight-grey;
+}
+
+::selection {
+  background: $highlight-grey;
+}
 
 /* Webkit Scrollbar Customize */
 ::-webkit-scrollbar {
@@ -42,26 +57,26 @@ pre tt {
 
 pre {
   padding: .7em 1.1em;
-  overflow: auto;
   font-size: .9em;
   line-height: 1.5;
   letter-spacing: normal;
   white-space: pre;
   color: #eee;
   background: $midnightblue;
-  border-radius: 4px;
-  // -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
   code {
     padding: 0;
     margin: 0;
-    background: $midnightblue;
+    color: #eee;
+    background: transparent;
   }
 }
 
 code {
-  color: #eee;
-  background: $highlight-grey;
+  color: hsl(0, 1%, 67%);
+  background: $dark-grey;
   border-radius: 3px;
   padding: 0 3px;
   margin: 0 4px;
@@ -160,8 +175,11 @@ table {
     position: relative;
 }
 
+.highlight div,
 .highlight pre {
-    padding-right: 75px;
+  overflow-x: auto;
+  border-radius: 4px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .highlight-copy-btn {
@@ -207,7 +225,6 @@ table {
 	clip-path: none;
 	color: #21759b;
 	display: block;
-	font-size: 14px;
 	font-size: 0.875rem;
 	font-weight: bold;
 	height: auto;
@@ -296,7 +313,7 @@ table {
 #mobile-menu {
   position: fixed;
   bottom: 4.8em;
-  right: 1.5em;
+  right: 4.5em;
   display: none;
   padding: .6em 1.8em;
   z-index: 1;
@@ -456,7 +473,6 @@ p.img-404 {
     @include dimmed;
 
     &:hover {
-      text-decoration: underline;
       cursor: pointer;
     }
   }
@@ -483,6 +499,36 @@ p.img-404 {
     flex-shrink: 0;
     margin-left: 1em;
     @include dimmed;
+  }
+  .post-description {
+    font-size:x-small;
+    flex-shrink: 0;
+    @include dimmed;
+  }
+}
+
+.pinned-posts-group {
+  display: flex;
+  margin-bottom: 1.9em;
+  line-height: normal;
+  border-bottom: 2px $highlight-grey solid;
+
+  .pinned-posts-list {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pinned-post-item {
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+    padding: 12px 0;
+
+    a {
+      padding-left: 12px;
+    }
   }
 }
 
@@ -674,7 +720,14 @@ a.footnote-ref {
     margin-right: .5em;
 
     &::before {
-      content: "#"
+      {{- with .Site.Params.tagSymbol | default "#" -}}content: "{{ . }}"{{- end -}}
+    }
+  }
+  .category {
+    margin-right: .5em;
+
+    &::before {
+      {{- with .Site.Params.categorySymbol | default "⊲" -}}content: "{{ . }}"{{- end -}}
     }
   }
 }
@@ -901,6 +954,33 @@ a.footnote-ref {
   }
 
   #mobile-menu {
-    right: 1.2em;
+    right: 4.2em;
+  }
+  #home-subtitle {
+    font-size: 0.5em;
   }
 }
+
+// If homeSubtitlePrinter is true
+{{ if .Site.Params.homeSubtitlePrinter }}
+  #home-subtitle{
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .5em solid $typewriter; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto 1.5em auto; /* Gives that scrolling effect as the typing happens */
+    // letter-spacing: .100em; /* Adjust as needed */
+    animation: typing 5s steps({{ strings.RuneCount .Site.Params.homeSubtitle }}, end),blink-caret .75s linear 5.1s infinite;
+  }
+
+  /* The typing effect */
+  @keyframes typing {
+    from {max-width: 0;}
+    to {max-width: 100%;}
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: $typewriter}
+  }
+{{ end }}

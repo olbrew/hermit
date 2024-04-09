@@ -1,7 +1,3 @@
-/**
- * Utils
- */
-
 // Throttle
 //
 const throttle = (callback, limit) => {
@@ -58,8 +54,27 @@ const toggleMobileMenu = () => {
     mobileMenuVisible = true;
   } else {
     mobileMenu.style.animationName = 'bounceOutRight';
-    mobileMenu.style.webkitAnimationName = 'bounceOutRight'
+    mobileMenu.style.webkitAnimationName = 'bounceOutRight';
+    mobileMenu.style.display = 'none';
     mobileMenuVisible = false;
+  }
+}
+
+// Social Share Toggle
+//
+let shareMenuVisible = false;
+const shareMobileMenu = () => {
+  let shareMenu = document.getElementById('share-links');
+  if (shareMenuVisible == false) {
+    shareMenu.style.animationName = 'bounceInRight';
+    shareMenu.style.webkitAnimationName = 'bounceInRight';
+    shareMenu.style.display = 'block';
+    shareMenuVisible = true;
+  } else {
+    shareMenu.style.animationName = 'bounceOutRight';
+    shareMenu.style.webkitAnimationName = 'bounceOutRight';
+    shareMenu.style.display = 'none';
+    shareMenuVisible = false;
   }
 }
 
@@ -82,11 +97,12 @@ const toggleToc = () => {
 
 if (header !== null) {
   listen('#menu-btn', "click", toggleMobileMenu);
+  listen('#share-btn', "click", shareMobileMenu);
   listen('#toc-btn', "click", toggleToc);
   listen('#img-btn', "click", showImg);
   listen('.bg-img', "click", hideImg);
 
-  document.querySelectorAll('.post-year').forEach((ele)=> {
+  document.querySelectorAll('.post-year').forEach((ele) => {
     ele.addEventListener('click', () => {
       window.location.hash = '#' + ele.id;
     });
@@ -97,6 +113,9 @@ if (header !== null) {
 
     if (mobileMenuVisible == true) {
       toggleMobileMenu();
+    }
+    if (shareMenuVisible == true) {
+      shareMobileMenu();
     }
   }, 250));
 }

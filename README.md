@@ -1,50 +1,82 @@
-# Hugo theme Hermit
+# hermit-V2 -: The Minimal Hugo Theme
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/01a2e2de-d57d-4d89-8322-95685000e60f/deploy-status)](https://app.netlify.com/sites/hugo-theme-hermit/deploys)
+hermit-V2 is a minimal and fast theme for Hugo, built for bloggers who want a simple and focused website. This is a maintained fork of [Hermit](https://github.com/Track3/hermit), which iterates over the original work to have production-ready experience with bug fixes and new features.
 
-Hermit is a minimal and fast theme for Hugo. It's built for bloggers who want a simple and focused website.
+![](https://raw.githubusercontent.com/1bl4z3r/hermit-V2/staging/images/screenshot.png)
 
-![](https://github.com/Track3/hermit/raw/master/images/screenshot.png)
+### History
 
-## Features
+When I had switched from Jekyll to Hugo, I was in a need of a theme. I was enthralled by this very theme, and I am using it since in my own personal blog. However, it looks like [OP]((https://github.com/Track3)) has stopped maintaining this theme and as a result, it is riddled with bugs and code breaks. Hence, I have taken upon myself to maintain this theme.The intention of this project is to keep the essence of the theme as-it-is and only add minor updates and squash bugs which may arise.
+
+> GoHugo Theme Page : [https://themes.gohugo.io/themes/hermit-v2/](https://themes.gohugo.io/themes/hermit-v2/)
+
+## Demo
+
+Demo page [https://1bl4z3r.github.io/hermit-V2](https://1bl4z3r.github.io/hermit-V2), which is both demo and documentation for the theme, is located in [Staging Branch](https://github.com/1bl4z3r/hermit-V2/tree/staging)
+
+![](https://raw.githubusercontent.com/1bl4z3r/hermit-V2/staging/images/screenshot.gif)
+
+## Configuration Guide
+
+Configuration Guide is present in [Explaining Configs](https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/)
+
+## Installation
+
+Run this command from the root of your Hugo directory:
+
+```bash
+git clone https://github.com/1bl4z3r/hermit-V2 themes/hermit-v2
+```
+
+Or, if your Hugo site is already in git, you can include this repository as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This makes it easier to update this theme. For this, you need to run:
+
+```bash
+git submodule add -b main https://github.com/1bl4z3r/hermit-V2 themes/hermit-v2
+```
+
+To update submodule and to have the latest version of the theme with your project, run
+```bash
+git submodule update --remote
+```
+
+## Sites using hermit-V2
+
+Below page has an extensive list of user submitted sites/pages using hermit-V2.
+
+Page in question: [Sites-using-hermit‐V2](https://github.com/1bl4z3r/hermit-V2/wiki)
+
+## First Use Knowledge
+
+### Features Inherited from Original Theme
 
 * A single-column layout and carefully crafted typography offers a great reading experience.
-* Navigations and functions are placed in the bottom bar which will hide when you scroll down.
+* Navigation and functions are placed in the bottom-bar which will hide when you scroll down.
 * Featured image is supported. It will be displayed as a dimmed background of the page.
 * Displays all of your posts on a single page, with one section per year, simple and compact.
 * Extremely lightweight and load fast. No third party framework, no unnecessary code.
 * All code fields feature syntax highlighting and a code-copy function
 * Responsive & Retina Ready. Scales gracefully from a big screen all the way down to the smallest mobile phone. Assets in vector format ensures that it looks sharp on high-resolution screens.
 
-**[Theme Demo](https://hugo-theme-hermit.netlify.com/)** (uses contents and config from the `exampleSite` folder)
-
-![](https://github.com/Track3/hermit/raw/master/images/hermit.png)
-
-## Getting started
-
-### Installation
-
-Run this command from the root of your Hugo directory:
-
-```bash
-$ git clone https://github.com/Track3/hermit.git themes/hermit
-```
-
-Or, if your Hugo site is already in git, you can include this repository as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). This makes it easier to update this theme. For this you need to run:
-
-```bash
-$ git submodule add https://github.com/Track3/hermit.git themes/hermit
-```
-
-Alternatively, if you are not familiar with git, you can download the theme as a `.zip` file, unzip the theme contents, and then move the unzipped source into your `themes` directory.
-
-For more information, read the official [documentation](https://gohugo.io/themes/installing-and-using-themes/) of Hugo.
+![](https://raw.githubusercontent.com/1bl4z3r/hermit-V2/staging/images/hermit.webp)
 
 ### Configuration
 
-The example config file can be found in the theme's `exampleSite` folder. You can just copy the `config.toml` to the root directory of your Hugo site. There are instructions in the example config file, feel free to change strings as you like to customize your website.
+Site Configuration is done through `hugo.toml` or `hugo.yaml` file in root directory of your Hugo Site. To aid you, there is a [hugo.toml.example](https://github.com/1bl4z3r/hermit-V2/blob/main/hugo.toml.example) file located in theme folder. See this configuration in action [here](https://github.com/1bl4z3r/hermit-V2/blob/staging/hugo.toml). See what each configuration does [here](https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/#configuation-in-hugotoml).
 
-#### Favicon
+### Custom CSS and JS
+
+I have found that there are some requirements where custom CSS and JS should be supplied to a page to make it work. This custom files are not required for the whole of the site, but is restricted to a page or few particular pages. E.g. If you make contact form.
+
+To make use of custom CSS and JS, add the below section to page frontmatter. If there is any folder structure, that should be mentioned as well.
+
+```
+custom_css = ["custom_css/foo.css","custom_css/bar.css"]
+custom_js = ["custom_js/custom-about.js"]
+```
+
+The files itself will reside in `assets` directory. Refer to [Staging Branch](https://github.com/1bl4z3r/hermit-V2/tree/staging) to have a feel on how [this](https://github.com/1bl4z3r/hermit-V2/blob/staging/content/about-hugo.md) is implemented.
+
+### Favicon
 
 Use [RealFaviconGenerator](https://realfavicongenerator.net/) to generate these files, put them into your site's `static` folder:
 
@@ -58,7 +90,7 @@ Use [RealFaviconGenerator](https://realfavicongenerator.net/) to generate these 
 * safari-pinned-tab.svg
 * site.webmanifest
 
-#### Social icons
+### Social icons
 
 The following icons are supported, please make sure the `name` filed is exactly one of these:
 
@@ -69,7 +101,9 @@ The following icons are supported, please make sure the `name` filed is exactly 
 | `stackoverflow` | `telegram`  | `twitter`    | `youtube` |
 | `shutterstock`  | `freepik`   | `adobestock` | `123rf`   |
 | `dreamstime`    | `dribbble`  | `behance`    | `paypal`  |
-| `twitch`        | `qq`        |              |           |
+| `twitch`        | `qq`        | `mastodon`   | `discord` |
+| `etsy`          | `tiktok`    | `imgur`      | `bluesky` |
+| `medium`        | `medium old`|              |           |
 
 If that's not enough, you can see [Overriding templates](#overriding-templates) section.
 
@@ -78,35 +112,35 @@ If that's not enough, you can see [Overriding templates](#overriding-templates) 
 * Keep your regular pages in the `content` folder. To create a new page, run `hugo new page-title.md`
 * Keep your blog posts in the `content/posts` folder. To create a new post, run `hugo new posts/post-title.md`
 
-### More customizations
+### Overriding templates
 
-#### Overriding templates
+In Hugo, layouts can live in either the project’s (root) or the themes’ layout folders, any template inside the root layout folder will override theme's layout that relative to it, for example: `layouts/_default/baseof.html` will override `themes/hermit/layouts/_default/baseof.html`. So, you can easily customize the theme without edit it directly, which makes updating the theme easier. Here are some common customizations:
 
-In Hugo, layouts can live in either the project’s (root) or the themes’ layout folders, any template inside the root layout folder will override theme's layout that relative to it, for example: `layouts/_default/baseof.html` will override `themes/hermit/layouts/_default/baseof.html`. So, you can easily customize the theme without edit it directly, which makes updating the theme easier. Here's some common customizations:
+### Customize social icons
+You can modify or add any SVG icons in site's `layouts/partials/svg.html`.
 
-##### Customize social icons
-You can modify or add any svg icons in site's `layouts/partials/svg.html`.
+### Customize comment system
+We only have built-in support for Disqus at the moment, if that doesn't fit your needs, you can just add HTML to site's `layouts/partials/comments.html`.
 
-##### Customize comment system
-We only have built-in support for Disqus at the moment, if that doesn't fit your needs, you can just add html to site's `layouts/partials/comments.html`.
+### Add custom analytics
+If you prefer to use different analytics system other than Google Analytics, then add them inside `layouts/partials/analytics.html`.
 
-##### Add custom analytics
-If you prefer to use different analytics system other than google analytics, then add them inside `layouts/partials/analytics.html`.
+### Customize CSS
 
-#### Customize CSS
+1. **Change predefined colors/effects** - If you'd like to customize theme color or fonts, you can simply override `assets/scss/_predefined.scss`, by simply copy it to site's root (keep the same relative path) then edit those variables.
+2. **Change CSS effects limited to single page or few pages** - Add following to your page FrontMatter
+`custom_css = ["custom_css/foo.css","custom_css/bar.css"]`, and add the relevant SCSS files in `assets` directory. You may find additional help in [Custom CSS and JS](#custom-css-and-js).
+3. **Change css styling sitewide** - If you are unhappy with how the theme looks and feels and want to change some (or all) of it to make it truly your own, you can do so by adding `assets/scss/userstyles.scss` to your site's root and modify Stylesheets to your liking.
 
-If you'd like to customize theme color or fonts, you can simply override `assets/scss/_predefined.scss`, by simply copy it to site's root (keep the same relative path) then edit those variables. But keep in mind, you'll need **Hugo extended version** which has the ability to rebuild SCSS. You don't have to use extended version in production but in this case it's necessary to make sure the `resources` folder is committed and "up to date" (by running `hugo` or `hugo server` locally using the extended version). But anyway, always use the extended version if you can.
+You'll need **Hugo extended version**, which has the ability to rebuild SCSS. You don't have to use extended version in production, but in this case it's necessary to make sure the `resources` folder is committed and "up to date" (by running `hugo` or `hugo server` locally using the extended version). But anyway, always use the extended version if you can.
 
-For adding other custom CSS to the theme, you can assign an array of references in `config.toml` like following:
-```
-[params]
-  customCSS = ["css/foo.css", "css/bar.css"]
-```
-You may reference as many stylesheets as you want. Their paths need to be relative to the `static` folder or it can be a full URL for external resources.
+### Code injection
 
-#### Code injection
+You can inject any HTML code to every page's document head or right above the closing body tag. This makes it easier to add any HTML metadata, custom css/js, DNS-prefetch etc. To do this you simply need to create a file at site's `layouts/partials/extra-head.html` or `layouts/partials/extra-foot.html`, code inside will be injected to every page.
 
-You can inject any html code to every page's document head or right above the closing body tag. This makes it easier to add any html meta data, custom css/js, dns-prefetch etc. To do this you simply need to create a file at site's `layouts/partials/extra-head.html` or `layouts/partials/extra-foot.html`, code inside will be injected to every page.
+### LaTeX in Markdown
+
+LaTeX is supported by this theme through Mathjax. Please check [explaining-configs](https://1bl4z3r.github.io/hermit-V2/en/posts/explaining-configs/) to learn more.
 
 ## Acknowledgments
 
@@ -114,5 +148,4 @@ You can inject any html code to every page's document head or right above the cl
 * [animate.css](https://daneden.github.io/animate.css/) - [MIT](https://github.com/daneden/animate.css/blob/master/LICENSE)
 * [feather](https://feathericons.com/) - [MIT](https://github.com/feathericons/feather/blob/master/LICENSE)
 * [code-copy.js](assets/js/code-copy.js) - [Tom Spencer](https://www.fiznool.com/blog/2018/09/14/adding-click-to-copy-buttons-to-a-hugo-powered-blog/)
-
-Thanks!
+* [Everyone, who has submitted a PR](https://github.com/1bl4z3r/hermit-V2/pulls?q=is%3Apr+is%3Aclosed)
