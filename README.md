@@ -2,7 +2,7 @@
 
 hermit-V2 is a minimal and fast theme for Hugo, built for bloggers who want a simple and focused website. This is a maintained fork of [Hermit](https://github.com/Track3/hermit), which iterates over the original work to have production-ready experience with bug fixes and new features.
 
-![](https://raw.githubusercontent.com/1bl4z3r/hermit-V2/staging/images/screenshot.png)
+![](https://raw.githubusercontent.com/1bl4z3r/hermit-V2/main/images/screenshot.jpg)
 
 ### History
 
@@ -41,9 +41,12 @@ git submodule update --remote
 
 ## Sites using hermit-V2
 
-Below page has an extensive list of user submitted sites/pages using hermit-V2.
+__Sites using hermit-V2__ is a user contributed list of all the blogs/pages that is using hermit-V2 in some capacity. It could be any component of the theme from landing page or a partial to full fledged use of the theme. The objective of this section is to :
 
-Page in question: [Sites-using-hermit‐V2](https://github.com/1bl4z3r/hermit-V2/wiki)
+- Help new and aspiring bloggers/webmasters to get inspiration from
+- Create a sense of community
+
+You can find currently listed sites from [Sites-using-hermit‐V2](https://github.com/1bl4z3r/hermit-V2/wiki#sites-using-hermit-v2) and you can add your site by raising an [issue for the same](https://github.com/1bl4z3r/hermit-V2/issues/new?assignees=1bl4z3r&labels=hermit-V2+sites&projects=&template=add-remove-sites-using-hermit-v2.md&title=Add+to+Sites+using+hermit-V2).
 
 ## First Use Knowledge
 
@@ -89,6 +92,13 @@ Use [RealFaviconGenerator](https://realfavicongenerator.net/) to generate these 
 * mstile-150x150.png
 * safari-pinned-tab.svg
 * site.webmanifest
+
+#### SVG Favicons
+
+If your favicon is in SVG format, there are two ways to implement the same in this theme.
+
+* If you are looking for a clean directory structure, place your favicon as `favicon.svg` in `static` directory. **In this mode, favicon will not be minified by Hugo**
+* If you want your generated site to be as light as possible, place your favicon as `favicon.svg` in `assets/images`. **In this mode, favicon will be minified by Hugo**
 
 ### Social icons
 
